@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <title>Contoh Alert - Luas Persegi Panjang</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    h1 { color: #4a4a4a; }
+    .result { margin-top: 15px; }
+    .title { font-size: 20px; color: blue; font-weight: bold; }
+    .separator { margin: 8px 0; border-top: 1px dashed #999; }
+  </style>
+</head>
+<body>
+  <h1>Contoh Alert</h1>
+
+  <script type="text/javascript">
+    // Minta nama dan ukuran dari user
+    var nama = prompt("Masukkan nama Anda:", "");
+    if (nama === null) nama = ""; // jika user cancel
+
+    var panjangStr = prompt("Masukan panjang (cm):", "25");
+    if (panjangStr === null) panjangStr = "0";
+
+    var lebarStr = prompt("Masukan lebar (cm):", "10");
+    if (lebarStr === null) lebarStr = "0";
+
+    // Konversi ke angka (mengijinkan desimal)
+    var panjang = parseFloat(panjangStr);
+    var lebar = parseFloat(lebarStr);
+
+    // Validasi: jika bukan angka, set 0 dan beri peringatan
+    if (isNaN(panjang)) {
+      alert("Nilai panjang tidak valid. Di-set 0.");
+      panjang = 0;
+    }
+    if (isNaN(lebar)) {
+      alert("Nilai lebar tidak valid. Di-set 0.");
+      lebar = 0;
+    }
+
+    var luas = panjang * lebar;
+
+    // Tampilkan hasil ke halaman
+    document.write('<div class="result">');
+    document.write('<div class="title">Luas Persegi Panjang</div>');
+    document.write('<div class="separator"></div>');
+    document.write('<div>Programmer: ' + (nama.trim() === "" ? "-" : nama) + '</div>');
+    document.write('<div>Panjang = ' + panjang + ' cm</div>');
+    document.write('<div>Lebar = ' + lebar + ' cm</div>');
+    document.write('<div>Luas = ' + panjang + ' × ' + lebar + ' = ' + luas + ' cm<sup>2</sup></div>');
+    document.write('</div>');
+  </script>
+
+</body>
+</html>

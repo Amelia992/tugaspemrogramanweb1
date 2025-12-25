@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tentang Web Ini</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+    :root {
+      --primary: #FF758C;
+      --secondary: #FF7EB3;
+      --accent: #FF2E63;
+      --dark: #1A1A2E;
+      --light: #FFFFFF;
+      --glass: rgba(255, 255, 255, 0.1);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+      color: var(--light);
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    .gradient-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background:
+        radial-gradient(circle at 20% 50%, rgba(159, 122, 234, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(102, 126, 234, 0.2) 0%, transparent 50%),
+        radial-gradient(circle at 40% 20%, rgba(118, 75, 162, 0.4) 0%, transparent 50%);
+      z-index: -1;
+    }
+
+    .about-section {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8rem 1rem 2rem;
+    }
+
+    .about-container {
+      max-width: 1000px;
+      width: 100%;
+    }
+
+    .about-card {
+      background: rgba(26, 26, 46, 0.8);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      padding: 3rem;
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .about-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .about-icon {
+      font-size: 4rem;
+      color: var(--accent);
+      margin-bottom: 1rem;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+    }
+
+    .about-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, var(--light) 0%, var(--accent) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .about-subtitle {
+      font-size: 1.1rem;
+      color: rgba(255, 255, 255, 0.8);
+      line-height: 1.6;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    /* Content Sections */
+    .content-section {
+      margin-bottom: 3rem;
+    }
+
+    .section-title {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+      text-align: left;
+      position: relative;
+      padding-left: 1rem;
+    }
+
+    .section-title::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 4px;
+      height: 24px;
+      background: var(--accent);
+      border-radius: 2px;
+    }
+
+    .section-content {
+      color: rgba(255, 255, 255, 0.9);
+      line-height: 1.8;
+      font-size: 1.05rem;
+    }
+
+    /* Modern Features List */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .feature-card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 15px;
+      padding: 1.5rem;
+      transition: all 0.3s ease;
+    }
+
+    .feature-card:hover {
+      background: rgba(255, 255, 255, 0.1);
+      transform: translateY(-3px);
+      border-color: var(--accent);
+    }
+
+    .feature-icon {
+      font-size: 2rem;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    .feature-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: var(--light);
+    }
+
+    .feature-description {
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 0.95rem;
+    }
+
+    /* Tech Stack */
+    .tech-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+      margin: 2rem 0;
+    }
+
+    .tech-item {
+      background: rgba(255, 140, 66, 0.2);
+      border: 1px solid var(--accent);
+      border-radius: 25px;
+      padding: 0.5rem 1.5rem;
+      color: var(--light);
+      font-weight: 500;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+    }
+
+    .tech-item:hover {
+      background: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    /* Modern Buttons */
+    .btn-modern {
+      display: inline-block;
+      padding: 1rem 2rem;
+      border: none;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .btn-primary-modern {
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      color: var(--light);
+      box-shadow: 0 8px 25px rgba(255, 107, 53, 0.3);
+    }
+
+    .btn-primary-modern:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 35px rgba(255, 107, 53, 0.4);
+      color: var(--light);
+    }
+
+    /* Back Button */
+    .back-section {
+      text-align: center;
+      margin-top: 3rem;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .about-card {
+        padding: 2rem;
+      }
+
+      .about-title {
+        font-size: 2rem;
+      }
+
+      .features-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes rotate {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .about-card {
+        max-width: 95%;
+        padding: 35px 25px;
+      }
+
+      h2 {
+        font-size: 2rem;
+      }
+
+      h4 {
+        font-size: 1.2rem;
+      }
+
+      p {
+        font-size: 1rem;
+      }
+
+      ul {
+        max-width: 400px;
+      }
+
+      ul li {
+        font-size: 0.95rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .about-card {
+        padding: 25px 20px;
+        margin: 15px;
+      }
+
+      h2 {
+        font-size: 1.7rem;
+      }
+
+      h4 {
+        font-size: 1.1rem;
+        margin: 25px 0 15px 0;
+      }
+
+      p {
+        font-size: 0.95rem;
+      }
+
+      ul {
+        max-width: 300px;
+      }
+
+      ul li {
+        font-size: 0.9rem;
+        margin-bottom: 10px;
+      }
+
+      .btn-custom {
+        padding: 12px 25px;
+        font-size: 0.9rem;
+      }
+
+      .navbar-modern .nav-link {
+        font-size: 0.9rem;
+        padding: 0.8rem 1rem !important;
+        margin: 0.2rem 0;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+      }
+
+      .navbar-modern .nav-link:hover {
+        background: rgba(255, 255, 255, 0.1);
+        transform: translateY(-1px);
+      }
+
+      .navbar-modern .navbar-toggler {
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        padding: 8px 12px;
+        border-radius: 8px;
+      }
+
+      .navbar-modern .navbar-toggler:focus {
+        box-shadow: 0 0 0 0.25rem rgba(255, 255, 255, 0.1);
+      }
+
+      .social-icon-nav {
+        width: 44px !important;
+        height: 44px !important;
+        font-size: 1.1rem !important;
+      }
+
+      /* Enhanced Mobile Navigation */
+      .navbar-collapse {
+        transition: all 0.3s ease;
+      }
+
+      .navbar-collapse.show {
+        display: block !important;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background: rgba(17, 17, 35, 0.98);
+        backdrop-filter: blur(20px);
+        z-index: 1050;
+        padding: 80px 20px 20px;
+        overflow-y: auto;
+      }
+
+      .navbar-collapse.show .navbar-nav {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        margin: 0;
+        padding: 0;
+      }
+
+      .navbar-collapse.show .navbar-nav .nav-item {
+        margin: 0;
+      }
+
+      .navbar-collapse.show .navbar-nav .nav-link {
+        padding: 1rem 1.5rem !important;
+        margin: 0.5rem 0;
+        border-radius: 12px;
+        font-size: 1.1rem !important;
+        text-align: center;
+        transition: all 0.3s ease;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .navbar-collapse.show .navbar-nav .nav-link:hover {
+        background: rgba(255, 255, 255, 0.15);
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+      }
+
+      .navbar-collapse.show .navbar-nav .nav-link.active {
+        background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+        color: white !important;
+        box-shadow: 0 8px 25px rgba(100, 108, 255, 0.4);
+      }
+
+      .navbar-collapse.show .d-flex {
+        justify-content: center;
+        margin-top: 2rem;
+        padding-top: 2rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      /* Hamburger Button Animation */
+      .navbar-toggler {
+        position: relative;
+        width: 50px;
+        height: 50px;
+        border: none !important;
+        background: rgba(255, 255, 255, 0.1) !important;
+        backdrop-filter: blur(10px);
+        border-radius: 12px !important;
+        padding: 10px !important;
+        z-index: 1051;
+        transition: all 0.3s ease;
+      }
+
+      .navbar-toggler:hover {
+        background: rgba(255, 255, 255, 0.2) !important;
+        transform: scale(1.05);
+      }
+
+      .navbar-toggler:focus {
+        box-shadow: 0 0 0 0.25rem rgba(255, 255, 255, 0.25) !important;
+        border: none !important;
+      }
+
+      .navbar-toggler-icon {
+        position: relative;
+        width: 24px;
+        height: 2px;
+        background: white;
+        display: block;
+        transition: all 0.3s ease;
+      }
+
+      .navbar-toggler-icon::before,
+      .navbar-toggler-icon::after {
+        content: '';
+        position: absolute;
+        width: 24px;
+        height: 2px;
+        background: white;
+        left: 0;
+        transition: all 0.3s ease;
+      }
+
+      .navbar-toggler-icon::before {
+        top: -8px;
+      }
+
+      .navbar-toggler-icon::after {
+        top: 8px;
+      }
+
+      .navbar-toggler.active .navbar-toggler-icon {
+        background: transparent;
+      }
+
+      .navbar-toggler.active .navbar-toggler-icon::before {
+        top: 0;
+        transform: rotate(45deg);
+      }
+
+      .navbar-toggler.active .navbar-toggler-icon::after {
+        top: 0;
+        transform: rotate(-45deg);
+      }
+
+      /* Close button for mobile menu */
+      .navbar-collapse.show::before {
+        content: '✕';
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        font-size: 2rem;
+        color: white;
+        cursor: pointer;
+        z-index: 1052;
+        width: 50px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        transition: all 0.3s ease;
+      }
+
+      .navbar-collapse.show::before:hover {
+        background: rgba(255, 255, 255, 0.2);
+        transform: scale(1.1);
+      }
+    }
+  .navbar-modern .nav-link i {
+      margin-right: 0.5rem;
+      font-size: 1.1rem;
+    }
+
+    .navbar-modern .navbar-brand {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--light) !important;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .navbar-modern .navbar-brand:hover {
+      color: var(--accent) !important;
+      transform: scale(1.05);
+    }
+
+    .navbar-modern .navbar-brand i {
+      color: var(--accent);
+    }
+
+    .navbar-modern .navbar-toggler {
+      border-color: rgba(255, 255, 255, 0.3);
+      color: var(--light);
+    }
+
+    .navbar-modern .navbar-toggler:focus {
+      box-shadow: 0 0 15px rgba(255, 140, 66, 0.3);
+    }
+
+    .social-icon-nav {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--light);
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .social-icon-nav:hover {
+      background: var(--accent);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(255, 140, 66, 0.3);
+      color: var(--light);
+    }
+
+    /* Modern Navigation */
+    .navbar-modern {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      backdrop-filter: blur(20px);
+      background: rgba(26, 26, 46, 0.8);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 1rem 0;
+      transition: all 0.3s ease;
+    }
+
+    .navbar-modern .nav-link {
+      color: var(--light) !important;
+      font-weight: 500;
+      font-size: 0.9rem;
+      margin: 0 0.5rem;
+      padding: 0.5rem 1rem !important;
+      border-radius: 12px;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .navbar-modern .nav-link::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      transition: left 0.3s ease;
+      z-index: -1;
+    }
+
+    .navbar-modern .nav-link:hover::before {
+      left: 0;
+    }
+
+    .navbar-modern .nav-link:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(255, 107, 53, 0.3);
+      border-color: var(--accent);
+    }
+
+    .navbar-modern .nav-link.active {
+      background: var(--accent);
+      border-color: var(--accent);
+    }
+  </style>
+</head>
+<body>
+  <!-- Background -->
+  <div class="gradient-bg"></div>
+
+  <!-- Modern Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-modern">
+    <div class="container">
+      <!-- Logo/Brand -->
+      <a class="navbar-brand text-white fw-bold" href="index.html">
+        <i class="bi bi-info-circle-fill me-2"></i>Gita amelia
+      </a>
+
+      <!-- Mobile Toggle -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Navigation Links -->
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">
+              <i class="bi bi-house-fill me-2"></i>Beranda
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="profile.html">
+              <i class="bi bi-person-fill me-2"></i>Profil
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="about.html">
+              <i class="bi bi-info-circle-fill me-2"></i>Tentang
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="gallery.html">
+              <i class="bi bi-images me-2"></i>Galeri
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="tugas.html">
+              <i class="bi bi-journal-text me-2"></i>Tugas
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="kontak.html">
+              <i class="bi bi-envelope-fill me-2"></i>Kontak
+            </a>
+          </li>
+        </ul>
+
+        <!-- Social Media Icons -->
+        <div class="d-flex gap-2">
+          <a href="#" class="social-icon-nav">
+            <i class="bi bi-github"></i>
+          </a>
+          <a href="#" class="social-icon-nav">
+            <i class="bi bi-linkedin"></i>
+          </a>
+          <a href="#" class="social-icon-nav">
+            <i class="bi bi-instagram"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- About Section -->
+  <section class="about-section">
+    <div class="about-container">
+      <div class="about-card">
+        <!-- Header -->
+        <div class="about-header" data-aos="fade-down">
+          <i class="bi bi-info-circle-fill about-icon"></i>
+          <h1 class="about-title">Tentang Website Ini</h1>
+          <p class="about-subtitle">
+            Platform pembelajaran modern untuk memahami dasar-dasar pengembangan web dan teknologi terkini.
+          </p>
+        </div>
+
+        <!-- Main Description -->
+        <div class="content-section" data-aos="fade-up" data-aos-delay="200">
+          <div class="section-content">
+            Website ini dikembangkan sebagai <strong>media pembelajaran interaktif</strong> yang dirancang khusus untuk memahami konsep fundamental dalam pengembangan web modern. Setiap fitur dirancang dengan pendekatan <em>hands-on learning</em> untuk memaksimalkan pemahaman praktis.
+          </div>
+        </div>
+
+        <!-- Purpose Section -->
+        <div class="content-section" data-aos="fade-up" data-aos-delay="300">
+          <h2 class="section-title">
+            <i class="bi bi-bullseye me-2"></i>Tujuan Pembelajaran
+          </h2>
+          <div class="features-grid">
+            <div class="feature-card">
+              <i class="bi bi-file-code feature-icon"></i>
+              <h3 class="feature-title">HTML Fundamental</h3>
+              <p class="feature-description">Menguasai struktur dan semantic HTML untuk membuat konten web yang terorganisir.</p>
+            </div>
+            <div class="feature-card">
+              <i class="bi bi-palette feature-icon"></i>
+              <h3 class="feature-title">CSS Styling</h3>
+              <p class="feature-description">Belajar design responsif dan modern dengan CSS dan framework terkini.</p>
+            </div>
+            <div class="feature-card">
+              <i class="bi bi-link-45deg feature-icon"></i>
+              <h3 class="feature-title">Hyperlink Navigation</h3>
+              <p class="feature-description">Memahami navigasi antar halaman dan struktur website yang efisien.</p>
+            </div>
+            <div class="feature-card">
+              <i class="bi bi-server feature-icon"></i>
+              <h3 class="feature-title">Web Deployment</h3>
+              <p class="feature-description">Praktik langsung dalam proses hosting dan deployment website.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Technology Stack -->
+        <div class="content-section" data-aos="fade-up" data-aos-delay="400">
+          <h2 class="section-title">
+            <i class="bi bi-stack me-2"></i>Teknologi yang Digunakan
+          </h2>
+          <div class="tech-stack">
+            <span class="tech-item">HTML5</span>
+            <span class="tech-item">CSS3</span>
+            <span class="tech-item">JavaScript</span>
+            <span class="tech-item">Bootstrap 5</span>
+            <span class="tech-item">Responsive Design</span>
+          </div>
+        </div>
+
+        <!-- About Creator -->
+        <div class="content-section" data-aos="fade-up" data-aos-delay="500">
+          <h2 class="section-title">
+            <i class="bi bi-person-badge me-2"></i>Tentang Pembuat
+          </h2>
+          <div class="section-content">
+            <p>
+              Saya <strong>Gita amelia</strong>, seorang mahasiswa bersemangat dari
+              <strong>Universitas Pamulang</strong> kelas <strong>05TPLM004</strong>.
+              Website ini merupakan hasil dedikasi saya dalam <em>mata kuliah Pemrograman Web</em>
+              sebagai bukti pembelajaran dan eksplorasi dalam dunia web development.
+            </p>
+          </div>
+        </div>
+
+        <!-- Back Button -->
+        <div class="back-section" data-aos="fade-up" data-aos-delay="600">
+          <a href="index.html" class="btn-modern btn-primary-modern">
+            <i class="bi bi-house-door me-2"></i> Kembali ke Halaman Utama
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bootstrap JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- AOS Animation Script -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 1000,
+      once: true,
+      mirror: false
+    });
+
+    // Enhanced Mobile Navigation Script
+    document.addEventListener('DOMContentLoaded', function() {
+      const navbarToggler = document.querySelector('.navbar-toggler');
+      const navbarCollapse = document.querySelector('.navbar-collapse');
+      const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
+      const body = document.body;
+
+      // Toggle hamburger menu animation
+      navbarToggler.addEventListener('click', function(e) {
+        e.stopPropagation();
+        // Toggle 'show' class for mobile menu
+        navbarCollapse.classList.toggle('show');
+
+        // Toggle animation on hamburger button
+        this.classList.toggle('active');
+
+        // Prevent body scroll when menu is open
+        if (navbarCollapse.classList.contains('show')) {
+          body.style.overflow = 'hidden';
+        } else {
+          body.style.overflow = '';
+        }
+      });
+
+      // Close mobile menu when clicking on nav links
+      navLinks.forEach(link => {
+        link.addEventListener('click', function() {
+          closeMobileMenu();
+        });
+      });
+
+      // Close mobile menu when clicking close button (pseudo-element)
+      navbarCollapse.addEventListener('click', function(e) {
+        if (e.target === this && this.classList.contains('show')) {
+          const rect = this.getBoundingClientRect();
+          const closeX = rect.width - 70; // Close button area
+          const closeY = 20; // Close button Y position
+
+          if (e.clientX >= rect.left + closeX && e.clientY >= rect.top + closeY &&
+              e.clientX <= rect.left + closeX + 50 && e.clientY <= rect.top + closeY + 50) {
+            closeMobileMenu();
+          }
+        }
+      });
+
+      // Close mobile menu when clicking outside
+      document.addEventListener('click', function(event) {
+        const isClickInsideNavbar = navbarToggler.contains(event.target) ||
+                                   navbarCollapse.contains(event.target);
+
+        if (!isClickInsideNavbar && navbarCollapse.classList.contains('show')) {
+          closeMobileMenu();
+        }
+      });
+
+      // Function to close mobile menu
+      function closeMobileMenu() {
+        navbarCollapse.classList.remove('show');
+        navbarToggler.classList.remove('active');
+        body.style.overflow = '';
+      }
+
+      // Handle escape key
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && navbarCollapse.classList.contains('show')) {
+          closeMobileMenu();
+        }
+      });
+
+      // Add smooth scroll behavior
+      navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+          const href = this.getAttribute('href');
+          if (href.startsWith('#')) {
+            e.preventDefault();
+            const target = document.querySelector(href);
+            if (target) {
+              target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+              });
+            }
+          }
+        });
+      });
+
+      // Add active state to current page link
+      const currentPath = window.location.pathname;
+      navLinks.forEach(link => {
+        const linkPath = link.getAttribute('href');
+        if (linkPath && currentPath.includes(linkPath) && linkPath !== 'index.html') {
+          link.classList.add('active');
+        } else if (linkPath === 'index.html' && (currentPath === '/' || currentPath.endsWith('/index.html'))) {
+          link.classList.add('active');
+        }
+      });
+    });
+  </script>
+</body>
+</html>

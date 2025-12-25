@@ -1,0 +1,62 @@
+<html>
+<head>
+    <title>Form Registrasi</title>
+</head>
+<body>
+    <h2><center>Free Registration</center></h2>
+    <form>
+        <table align="center" border="0" cellpadding="5" cellspacing="0">
+            <tr>
+                <td>Nama</td>
+                <td><input type="text" name="nama" size="25"></td>
+            </tr>
+            <tr>
+                <td>Tgl Lahir</td>
+                <td><input type="text" name="tgl_lahir" size="15"></td>
+            </tr>
+            <tr>
+                <td>Alamat</td>
+                <td><textarea name="alamat" rows="3" cols="30"></textarea></td>
+            </tr>
+            <tr>
+                <td>Kota</td>
+                <td><input type="text" name="kota" size="20"></td>
+            </tr>
+            <tr>
+                <td>Pekerjaan</td>
+                <td>
+                    <select name="pekerjaan">
+                        <option value="lama">Lama</option>
+                        <option value="baru">Baru</option>
+                        <option value="freelance">Freelance</option>
+                        <option value="mahasiswa">Mahasiswa</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Jenis Kelamin</td>
+                <td>
+                    <input type="radio" name="jk" value="Laki-laki">Laki-Laki
+                    <input type="radio" name="jk" value="Perempuan">Perempuan
+                </td>
+            </tr>
+            <tr>
+                <td>Hobby</td>
+                <td>
+                    <input type="checkbox" name="hobi" value="Reading">Reading<br>
+                    <input type="checkbox" name="hobi" value="Sport">Sport<br>
+                    <input type="checkbox" name="hobi" value="Shopping">Shopping<br>
+                    <input type="checkbox" name="hobi" value="Traveling">Traveling
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <input type="submit" value="Kirim">
+                    <input type="reset" value="Cancel">
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>
